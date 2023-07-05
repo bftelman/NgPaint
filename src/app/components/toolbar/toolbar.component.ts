@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { ColorService } from 'src/app/services/color.service';
+import { DrawingService } from 'src/app/services/drawing.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
+  colorService = inject(ColorService);
+  drawingService = inject(DrawingService);
 
   ngOnInit(): void {
     for(let i: number = 20; i < 30; i++) {
@@ -36,4 +40,12 @@ export class ToolbarComponent implements OnInit {
     "#008080", // Teal
     "#000080",  // Navy
   ];
+
+  setColor(color: string) {
+    this.colorService.setColor(color);
+  }
+
+  selectBrush() {
+    this.drawingService.toolSelected = !this.drawingService.toolSelected;
+  }
 }

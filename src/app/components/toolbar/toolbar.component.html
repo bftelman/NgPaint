@@ -1,8 +1,15 @@
 <div class="toolbar">
     <div class="toolbar-item">
         <div class="color-palette">
-            <div class="color-preview" *ngFor="let color of colors" [style.backgroundColor]="color"></div>
+            <div class="color-preview" *ngFor="let color of colors" [style.backgroundColor]="color"
+                (click)="setColor(color)"></div>
         </div>
         <p class="toolbar-item-title"> Colors </p>
+    </div>
+    <div class="toolbar-item brush-item" (click)="selectBrush()">
+        <span class="material-icons-outlined">
+            brush
+        </span>
+        <p class="toolbar-item-title"> Brush </p>
     </div>
 </div>
